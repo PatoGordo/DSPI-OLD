@@ -1,21 +1,9 @@
-import { Router } from 'express'
-import { body } from 'express-validator';
+import { Router } from "express";
 
-import { UserRepository } from '../../database/repositories/UserRepository';
-
-import { RegisterUseCase } from './register/useCase';
-
-import { RegisterController } from './register/Controller'
-
-let userRepository = new UserRepository()
-
-let registerUseCase = new RegisterUseCase(userRepository)
-
-let registerController = new RegisterController(registerUseCase)
+import { signInController } from './sign-in'
 
 const authRouter = Router()
 
-authRouter.post('/register', registerController.execute,
-)
+authRouter.post('/sign-in', signInController.execute)
 
 export { authRouter }
